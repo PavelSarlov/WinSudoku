@@ -1,0 +1,72 @@
+﻿<Window x:Class="Sudoku.DifficultyDialogBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="LightGray"
+        Title="Difficulty" Height="200" Width="400">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type RadioButton}">
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontFamily" Value="Impact"/>
+            </Style>
+        </StackPanel.Resources>
+        
+        <Label Content="Choose your difficulty:" FontSize="20" HorizontalAlignment="Center" FontFamily="Impact"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <RadioButton x:Name="rbtnEasy" Content="Easy" Checked="OptionChosen" Foreground="DarkGreen"/>
+            <RadioButton x:Name="rbtnMedium" Content="Medium" Checked="OptionChosen" Foreground="DarkGoldenrod"/>
+            <RadioButton x:Name="rbtnHard" Content="Hard" Checked="OptionChosen" Foreground="DarkRed"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#373737"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="FontFamily" Value="Impact"/>
+                    <Setter Property="SnapsToDevicePixels" Value="True" />
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Padding" Value="5"/>
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" Value="DarkGray" />
+                                        <Setter Property="Foreground" Value="GhostWhite" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E59400" />
+                                        <Setter Property="Foreground" Value="White" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" Value="OrangeRed" />
+                                        <Setter Property="Foreground" Value="White" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </StackPanel.Resources>
+            
+            <Button x:Name="btnContinue" Content="Continue" Click="BtnContinue_Click" IsEnabled="False"/>
+            <Button x:Name="btnCancel" Content="Cancel" Click="BtnCancel_Click"/>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
